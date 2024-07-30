@@ -72,6 +72,7 @@ function processFiles(src, dest) {
   indexContents.push('export { default as wrapIcon } from \'./utils/wrapIcon\'');
   indexContents.push('export { default as bundleIcon } from \'./utils/bundleIcon\'');
   indexContents.push('export { createFluentIcon } from \'./utils/createFluentIcon\'');
+  indexContents.push('export type { FluentIcon } from \'./utils/createFluentIcon\'');
   indexContents.push('export * from \'./utils/useIconState\'');
   indexContents.push('export * from \'./utils/constants\'');
   indexContents.push('export { IconDirectionContextProvider, useIconContext } from \'./contexts/index\'');
@@ -136,6 +137,7 @@ function processFolder(srcPath, destPath, resizable) {
   for(const chunk of iconChunks) {
     chunk.unshift(`import { createFluentIcon } from "../utils/createFluentIcon";`);
     chunk.unshift(`import type { FluentIcon } from "../utils/createFluentIcon";`);
+    chunk.unshift(`"use client";`);
   }
 
   /** @type string[] */
